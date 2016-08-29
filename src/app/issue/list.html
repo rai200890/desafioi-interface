@@ -1,0 +1,28 @@
+<div class="row">
+  <h1 class="text-center">List of issues</h1>
+  <br/>
+</div>
+<div class="row">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Date</th>
+        <th>Type</th>
+        <th>Reason</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="issue in ctrl.issues">
+        <td>{{issue.id}}</td>
+        <td>{{issue.date}}</td>
+        <td>{{issue.type}}</td>
+        <td>{{issue.reason}}</td>
+        <td><a>View</a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</div>
+</div>
