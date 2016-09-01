@@ -21,6 +21,7 @@
   "homepage": "https://github.com/rai200890/desafioi-interface",
   "dependencies": {
     "angular": "^1.5.0",
+    "angular-ui-bootstrap": "^2.1.3",
     "angular-ui-router": "^0.3.1",
     "bootstrap": "^3.3.7"
   },
