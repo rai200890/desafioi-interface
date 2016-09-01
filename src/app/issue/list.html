@@ -1,5 +1,5 @@
 <div class="row">
-  <h1 class="text-center">List of issues</h1>
+  <h1 class="text-center">Atendimentos</h1>
   <br/>
 </div>
 <div class="row">
@@ -7,21 +7,21 @@
     <thead>
       <tr>
         <th>ID</th>
-        <th>Date</th>
-        <th>Customer</th>
-        <th>Type</th>
-        <th>Reason</th>
-        <th></th>
+        <th>Data de Registro</th>
+        <th>Cliente</th>
+        <th>Tipo</th>
+        <th>Motivo</th>
+        <th>Ações</th>
       </tr>
     </thead>
     <tbody>
       <tr ng-repeat="issue in ctrl.issues">
         <td>{{issue.id}}</td>
-        <td>{{"2015-04-01" | date}}</td>
+        <td>{{issue.created_at | date : "MM/dd/yyyy HH:MM"}} h</td>
         <td>{{issue.customer.name}}</td>
         <td>{{issue.issue_type.name}}</td>
         <td>{{issue.issue_reason.name}}</td>
-        <td><a>View</a></td>
+        <td><a class="btn btn-default btn-sm"><i class="glyphicon glyphicon-eye-open"></i></a></td>
       </tr>
     </tbody>
   </table>
