@@ -1,12 +1,13 @@
 export default class IssuesCtrl {
-
-  constructor() {
+  constructor(Issue) {
+    var self = this;
     this.issues = [];
+    this.pagination = {};
+    Issue.getIssues().success(function(response, statusCode, headers){
+      self.issues = response['issues'];
+      self.pagination = response['meta'];
+    });
   }
-
-  // changeName() {
-  //   this.name = 'angular-tips';
-  // }
 }
 
-IssuesCtrl.$inject = []
+IssuesCtrl.$inject = ['Issue'];
