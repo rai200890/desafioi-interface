@@ -3,27 +3,42 @@
   <br/>
 </div>
 <div class="row">
-  <table class="table table-striped table-bordered">
+  <table class="table" st-pipe="ctrl.get" st-table="ctrl.issues">
     <thead>
       <tr>
         <th>ID</th>
         <th>Data de Registro</th>
+        <th>Estado</th>
         <th>Cliente</th>
         <th>Tipo</th>
         <th>Motivo</th>
         <th>Ações</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody ng-show="!ctrl.isLoading">
       <tr ng-repeat="issue in ctrl.issues">
         <td>{{issue.id}}</td>
         <td>{{issue.created_at | date : "MM/dd/yyyy HH:MM"}} h</td>
+        <td>{{issue.state.name}}</td>
         <td>{{issue.customer.name}}</td>
         <td>{{issue.issue_type.name}}</td>
         <td>{{issue.issue_reason.name}}</td>
         <td><a class="btn btn-default btn-sm" uib-tooltip="Exibir detalhes"><i class="glyphicon glyphicon-eye-open"></i></a></td>
       </tr>
     </tbody>
+    <tbody ng-show="ctrl.isLoading">
+      <tr>
+        <td colspan="7" class="text-center">
+          Carregando...
+        </td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td class="text-center" st-pagination="" st-items-by-page="ctrl.per" colspan="7">
+        </td>
+      </tr>
+    </tfoot>
   </table>
 </div>
 </div>

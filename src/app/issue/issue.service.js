@@ -3,11 +3,12 @@ export default class Issue {
   constructor($http) {
    this._$http = $http;
   }
-  getIssues() {
-   return this._$http({
+  getIssues(params) {
+    var p = params;
+    return this._$http({
      method: "get",
-     url: API_URL+"/issues",
-     params: {}
+     url: API_URL +"/issues",
+     params: p
    });
  };
 }
