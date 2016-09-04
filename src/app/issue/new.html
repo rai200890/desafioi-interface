@@ -1,3 +1,17 @@
 <div class="row">
   <h2 class="text-center">Novo Atendimento</h2>
 </div>
+<div class="row">
+  <div ng-if="ctrl.errors" uib-alert class="alert alert-danger" close="ctrl.closeErrors()">
+    <ul ng-repeat="error in ctrl.errors">
+      <li>{{error}}</li>
+    </ul>
+  </div>
+  <div ng-if="ctrl.success" uib-alert class="alert alert-success" close="ctrl.closeSuccess()">
+    <p>Atendimento registrado com sucesso!</p>
+  </div>
+</div>
+<div class="row">
+  <form>
+  </form>
+</div>
