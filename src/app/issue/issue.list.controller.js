@@ -10,7 +10,7 @@ export default class IssuesCtrl {
     this.issues = [];
     this.isLoading = true;
 
-    this.get = (tableState) => {
+    this.fetch = (tableState) => {
       self.isLoading = true;
 
       var pagination = {
@@ -18,7 +18,7 @@ export default class IssuesCtrl {
         page: self.meta.next_page
       };
 
-      Issue.getIssues(pagination).success((response) => {
+      Issue.fetch(pagination).success((response) => {
         self.issues = response.issues;
         self.meta = response.meta;
         tableState.pagination.numberOfPages = self.meta.total_pages;

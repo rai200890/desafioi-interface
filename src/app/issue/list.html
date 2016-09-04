@@ -3,7 +3,7 @@
   <br/>
 </div>
 <div class="row">
-  <table class="table" st-pipe="ctrl.get" st-table="ctrl.issues">
+  <table class="table" st-pipe="ctrl.fetch" st-table="ctrl.issues">
     <thead>
       <tr>
         <th>ID</th>
@@ -29,7 +29,14 @@
     <tbody ng-show="ctrl.isLoading">
       <tr>
         <td colspan="7" class="text-center">
-          Carregando...
+          <strong>Carregando...</strong>
+        </td>
+      </tr>
+    </tbody>
+    <tbody ng-show="!ctrl.isLoading && len(ctrl.issues) == 0">
+      <tr>
+        <td colspan="7" class="text-center">
+          <strong>Nenhum chamado cadastrado ainda</strong>
         </td>
       </tr>
     </tbody>
