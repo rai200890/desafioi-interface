@@ -13,5 +13,35 @@
 </div>
 <div class="row">
   <form>
+    <div class="form-group">
+      <label for="customer">Cliente</label>
+      <input type="text" class="form-control" id="customer" ng-model="ctrl.issue.customer_id" placeholder="Cliente">
+    </div>
+    <div class="form-group">
+      <label for="issue_type">Tipo de Atendimento</label>
+      <select class="form-control" id="issue_type" ng-model="ctrl.issue.issue_type_id">
+        <option value="{{issue_type.id}}" ng-repeat="issue_type in ctrl.issue_types">{{issue_type.name}}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="issue_reason">Motivo do Atendimento</label>
+      <select class="form-control" id="issue_reason" ng-model="ctrl.issue.issue_reason_id">
+        <option value="{{issue_reason.id}}" ng-repeat="issue_reason in ctrl.issue_reasons">{{issue_reason.name}}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="state">Estado</label>
+      <select class="form-control" id="state" ng-model="ctrl.issue.state_id">
+        <option value="{{state.id}}" ng-repeat="state in ctrl.states">{{state.name}}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="body">Conteúdo</label>
+      <textarea class="form-control" rows="4" cols="50" ng-model="ctrl.issue.body">
+      </textarea>
+    </div>
+    <button ng-click="ctrl.clear()" class="btn btn-default">Limpar</button>
+    <button ng-click="ctrl.save()" type="submit" class="btn btn-primary">Salvar</button>
   </form>
+
 </div>
