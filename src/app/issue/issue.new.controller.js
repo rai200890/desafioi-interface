@@ -27,9 +27,9 @@ export default class NewIssueCtrl {
       Issue.create({
         issue: ctrl.issue
       }).success((response) => {
-        console.info('sucesso');
+        ctrl.success = true;
       }).error((response, status_code) => {
-        console.error('erro');
+        ctrl.errors = response;
       });
     };
   };

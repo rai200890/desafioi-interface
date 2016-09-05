@@ -5,17 +5,13 @@ export default class Issue {
   }
   fetch(params) {
     return this._$http({
-      method: "get",
+      method: "GET",
       url: API_URL + "/issues",
       params: params
     });
   };
   create(params) {
-    return this._$http({
-      method: "post",
-      url: API_URL + "/issues",
-      params: params
-    });
+    return this._$http.post(API_URL + "/issues", params);
   };
 };
 
