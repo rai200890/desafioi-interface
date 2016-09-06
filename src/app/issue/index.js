@@ -10,6 +10,7 @@ import Issue from './services/issue.js';
 import IssueType from './services/issue_type.js';
 import IssueReason from './services/issue_reason.js';
 import State from './services/state.js';
+import Customer from './services/customer.js';
 
 export default angular.module('app.issue', [uirouter])
   .config(routing)
@@ -19,4 +20,5 @@ export default angular.module('app.issue', [uirouter])
   .service('IssueType', IssueType)
   .service('IssueReason', IssueReason)
   .service('State', State)
+  .service('Customer', Customer)
   .name;

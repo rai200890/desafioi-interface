@@ -1,5 +1,5 @@
 export default class NewIssueCtrl {
-  constructor(Issue, IssueType, IssueReason, State) {
+  constructor(Issue, IssueType, IssueReason, State, Customer) {
     var ctrl = this;
     this.issue = {};
     this.errors = null;
@@ -35,4 +35,4 @@ export default class NewIssueCtrl {
   };
 };
 
-NewIssueCtrl.$inject = ['Issue', 'IssueType', 'IssueReason', 'State'];
+NewIssueCtrl.$inject = ['Issue', 'IssueType', 'IssueReason', 'State', 'Customer'];
