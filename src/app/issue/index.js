@@ -1,13 +1,15 @@
 import angular from 'angular';
 import uirouter from 'angular-ui-router';
 
-import routing from './issue.routes.js';
-import IssuesCtrl from './issue.list.controller.js';
-import NewIssueCtrl from './issue.new.controller.js';
-import Issue from './issue.service.js';
-import IssueType from './issue_type.service.js';
-import IssueReason from './issue_reason.service.js';
-import State from './state.service.js';
+import routing from './routes.js';
+
+import IssuesCtrl from './controllers/list.controller.js';
+import NewIssueCtrl from './controllers/new.controller.js';
+
+import Issue from './services/issue.js';
+import IssueType from './services/issue_type.js';
+import IssueReason from './services/issue_reason.js';
+import State from './services/state.js';
 
 export default angular.module('app.issue', [uirouter])
   .config(routing)
