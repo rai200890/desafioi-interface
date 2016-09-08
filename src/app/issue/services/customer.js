@@ -4,13 +4,17 @@ export default class Customer {
   constructor($http) {
     this._$http = $http;
   }
-  fetch() {
+  fetch(text) {
     return this._$http({
       method: "get",
-      url: API_URL + "/customers"
-    }).success(function(response){
-      console.log(response);
-      return response
-    });
+      url: API_URL + "/customers",
+      params: {by_id_or_name_or_email_or_phone: text}
+    }).then((customers) => {
+      return customers.data.customers.map((item, index) => {
+        let description = item.id +  " - " + item.name +  " - " + item.email + " - " + item.phone
+        item.description = description;
+        return item
+      });
+  });
   };
 };

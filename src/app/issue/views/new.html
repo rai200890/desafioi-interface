@@ -15,7 +15,9 @@
   <form>
     <div class="form-group">
       <label for="customer">Cliente</label>
-      <input type="text" class="form-control" id="customer" ng-model="ctrl.issue.customer_id" placeholder="Cliente">
+      <input type="text" placeholder="Procure por ID, Nome, Telefone ou Email" ng-model="ctrl.customer"
+       uib-typeahead="customer as customer.description for customer in ctrl.getCustomers($viewValue)"
+       class="form-control" typeahead-show-hint="true" typeahead-min-length="1" typeahead-wait-ms="200">
     </div>
     <div class="form-group">
       <label for="issue_type">Tipo de Atendimento</label>
@@ -43,5 +45,4 @@
     <button ng-click="ctrl.clear()" class="btn btn-default">Limpar</button>
     <button ng-click="ctrl.save()" type="submit" class="btn btn-primary">Salvar</button>
   </form>
-
 </div>

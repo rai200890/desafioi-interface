@@ -18,7 +18,7 @@
     <tbody ng-show="!ctrl.isLoading">
       <tr ng-repeat="issue in ctrl.issues">
         <td>{{issue.id}}</td>
-        <td>{{issue.created_at | date : "MM/dd/yyyy HH:MM"}} h</td>
+        <td>{{issue.created_at | date : "dd/MM/yyyy HH:mm:ss"}}</td>
         <td>{{issue.state.name}}</td>
         <td>{{issue.customer.name}}</td>
         <td>{{issue.issue_type.name}}</td>
