@@ -1,0 +1,49 @@
+<div class="row">
+  <h2 class="text-center">Novo Atendimento</h2>
+</div>
+<div class="row">
+  <div ng-if="ctrl.errors" uib-alert class="alert alert-danger" close="ctrl.closeErrors()">
+    <ul ng-repeat="error in ctrl.errors">
+      <li>{{error}}</li>
+    </ul>
+  </div>
+  <div ng-if="ctrl.success" uib-alert class="alert alert-success" close="ctrl.closeSuccess()">
+    <p>{{ctrl.success}}</p>
+  </div>
+</div>
+<div class="row">
+  <form id="form">
+    <div class="form-group">
+      <label for="customer">Cliente</label>
+      <input type="text" placeholder="Procure por ID, Nome, Telefone ou Email" ng-model="ctrl.customer"
+       uib-typeahead="customer as customer.description for customer in ctrl.getCustomers($viewValue)"
+       class="form-control" typeahead-show-hint="true" typeahead-min-length="1" typeahead-wait-ms="200"
+       ng-change="ctrl.validate()">
+    </div>
+    <div class="form-group">
+      <label for="issue_type">Tipo de Atendimento</label>
+      <select class="form-control" id="issue_type" ng-model="ctrl.issue.issue_type_id" ng-change="ctrl.validate()">
+        <option value="{{issueType.id}}" ng-repeat="issueType in ctrl.issueTypes">{{issueType.name}}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="issue_reason">Motivo do Atendimento</label>
+      <select class="form-control" id="issue_reason" ng-model="ctrl.issue.issue_reason_id" ng-change="ctrl.validate()">
+        <option value="{{issueReason.id}}" ng-repeat="issueReason in ctrl.issueReasons">{{issueReason.name}}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="state">Estado</label>
+      <select class="form-control" id="state" ng-model="ctrl.issue.state_id" ng-change="ctrl.validate()">
+        <option value="{{state.id}}" ng-repeat="state in ctrl.states">{{state.name}}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="body">Conteúdo</label>
+      <textarea class="form-control" rows="4" cols="50" ng-model="ctrl.issue.body" ng-change="ctrl.validate()">
+      </textarea>
+    </div>
+    <button ng-click="ctrl.clear()" class="btn btn-default">Limpar</button>
+    <button ng-click="ctrl.save()" ng-disabled="!ctrl.validate()" type="submit" class="btn btn-primary">Salvar</button>
+  </form>
+</div>
