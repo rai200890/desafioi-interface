@@ -6,14 +6,17 @@ export default class NewIssueCtrl {
     this.customer = null;
     this.errors = null;
     this.success = null;
+    this.issueTypes = [];
+    this.issueReasons = [];
+    this.states = [];
 
     function init() {
       IssueType.fetch().success((response) => {
-        ctrl.issue_types = response.issue_types;
+        ctrl.issueTypes = response.issue_types;
       });
 
       IssueReason.fetch().success((response) => {
-        ctrl.issue_reasons = response.issue_reasons;
+        ctrl.issueReasons = response.issue_reasons;
       });
 
       State.fetch().success((response) => {
@@ -21,13 +24,12 @@ export default class NewIssueCtrl {
       });
     };
 
-
     this.closeErrors = () => {
       ctrl.errors = null;
     };
 
     this.closeSuccess = () => {
-      ctrl.success = false;
+      ctrl.success = null;
     };
 
     this.clear = () => {
@@ -49,7 +51,7 @@ export default class NewIssueCtrl {
       }).success((response) => {
         ctrl.success = 'Atendimento nº ' + response.issue.id + ' registrado com sucesso!';
       }).error((response, status_code) => {
-        ctrl.errors = response;
+        ctrl.errors = response.errors;
       });
     };
 

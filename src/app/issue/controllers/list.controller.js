@@ -1,6 +1,6 @@
 export default class IssuesCtrl {
   constructor(Issue){
-    var self = this;
+    var ctrl = this;
 
     this.meta = {
       current_page: 1
@@ -11,18 +11,18 @@ export default class IssuesCtrl {
     this.isLoading = true;
 
     this.fetch = (tableState) => {
-      self.isLoading = true;
+      ctrl.isLoading = true;
 
-      var pagination = {
-        per: self.per,
-        page: self.meta.next_page
+      let pagination = {
+        per: ctrl.per,
+        page: ctrl.meta.next_page
       };
 
       Issue.fetch(pagination).success((response) => {
-        self.issues = response.issues;
-        self.meta = response.meta;
-        tableState.pagination.numberOfPages = self.meta.total_pages;
-        self.isLoading = false;
+        ctrl.issues = response.issues;
+        ctrl.meta = response.meta;
+        tableState.pagination.numberOfPages = ctrl.meta.total_pages;
+        ctrl.isLoading = false;
       });
     };
   };

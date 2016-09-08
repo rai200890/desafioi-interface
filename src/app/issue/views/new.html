@@ -23,13 +23,13 @@
     <div class="form-group">
       <label for="issue_type">Tipo de Atendimento</label>
       <select class="form-control" id="issue_type" ng-model="ctrl.issue.issue_type_id" ng-change="ctrl.validate()">
-        <option value="{{issue_type.id}}" ng-repeat="issue_type in ctrl.issue_types">{{issue_type.name}}</option>
+        <option value="{{issueType.id}}" ng-repeat="issueType in ctrl.issueTypes">{{issueType.name}}</option>
       </select>
     </div>
     <div class="form-group">
       <label for="issue_reason">Motivo do Atendimento</label>
       <select class="form-control" id="issue_reason" ng-model="ctrl.issue.issue_reason_id" ng-change="ctrl.validate()">
-        <option value="{{issue_reason.id}}" ng-repeat="issue_reason in ctrl.issue_reasons">{{issue_reason.name}}</option>
+        <option value="{{issueReason.id}}" ng-repeat="issueReason in ctrl.issueReasons">{{issueReason.name}}</option>
       </select>
     </div>
     <div class="form-group">
