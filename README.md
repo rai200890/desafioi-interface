@@ -1,19 +1,26 @@
 # desafioi-interface
 
-Generated with the [angular-webpack-workflow](https://github.com/preboot/angular-webpack)
+[![Build Status](https://travis-ci.org/rai200890/sac-interface.svg)](https://travis-ci.org/rai200890/sac-interface)
 
-### Quick start
+Single Page Application using AngularJS to add and list issues
+
+Workflow generated with the [angular-webpack-workflow](https://github.com/preboot/angular-webpack)
+
+## Install
 
 ```bash
-$ npm install #install NodeJs deps
-$ npm start #start server at localhost:8080
+ npm install #install NodeJS deps
 ```
 
-Go to [http://localhost:8080](http://localhost:8080) in your browser.
+## Run
 
-## Testing
+```bash
+ npm start #start server at localhost:8080
+```
 
-#### 1. Unit Tests
+## Test
 
-* single run: `npm test`
-* live mode (TDD style): `npm run test-watch`
+```bash
+ npm test #run project's tests
+ npm run test-watch #run tests in watch mode
+```
