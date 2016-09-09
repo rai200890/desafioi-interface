@@ -6,6 +6,10 @@ export default class ShowIssueCtrl {
     Issue.get($stateParams.id).success((response) => {
       ctrl.issue = response.issue;
     });
+
+    this.customerName = (issue) => {
+      return issue.customer.name
+    };
   };
 }
 
