@@ -1,6 +1,7 @@
-# desafioi-interface
+# sac-interface
 
 [![Build Status](https://travis-ci.org/rai200890/sac-interface.svg)](https://travis-ci.org/rai200890/sac-interface)
+[![Code Climate](https://codeclimate.com/github/rai200890/sac-interface/badges/gpa.svg)](https://codeclimate.com/github/rai200890/sac-interface)
 
 Single Page Application using AngularJS to add and list issues
 
