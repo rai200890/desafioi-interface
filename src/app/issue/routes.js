@@ -12,5 +12,10 @@ export default function routes($stateProvider) {
       template: require('./views/new.html'),
       controller: 'NewIssueCtrl',
       controllerAs: 'ctrl'
-    });
+    }).state('issues_show', {
+    url: '/issues/:id',
+    template: require('./views/show.html'),
+    controller: 'ShowIssueCtrl',
+    controllerAs: 'ctrl'
+  });
 }
