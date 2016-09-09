@@ -1,0 +1,27 @@
+<div class="row">
+  <h2 class="text-center">Detalhes do Atendimento</h2>
+</div>
+<div class="row">
+  <dl class="dl-horizontal">
+    <dt>ID</dt>
+    <dd>{{ctrl.issue.id}}</dd>
+    <dt>Registrado em</dt>
+    <dd>{{ctrl.issue.created_at | date : "dd/MM/yyyy 'às' HH:mm:ss"}}</dd>
+    <dt>Cliente</dt>
+    <dd>{{ctrl.issue.customer.name}}
+      <button class="btn btn-info btn-xs"
+       uib-popover="{{ctrl.issue.customer.id + ' - ' + ctrl.issue.customer.email + ' - ' + ctrl.issue.customer.phone}}"
+       popover-title="Cliente" type="button" class="btn btn-default">
+      <i class="glyphicon glyphicon-info-sign"></i>
+      </button>
+    </dd>
+    <dt>Tipo de Atendimento</dt>
+    <dd>{{ctrl.issue.issue_type.name}}</dd>
+    <dt>Motivo do Atendimento</dt>
+    <dd>{{ctrl.issue.issue_reason.name}}</dd>
+    <dt>Estado</dt>
+    <dd>{{ctrl.issue.state.name}}</dd>
+    <dt>Conteúdo</dt>
+    <dd>{{ctrl.issue.body}}</dd>
+  </dl>
+</div>

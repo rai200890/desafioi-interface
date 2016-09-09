@@ -1,9 +1,9 @@
 <div class="row">
-  <h1 class="text-center">Atendimentos</h1>
+  <h2 class="text-center">Atendimentos</h2>
   <br/>
 </div>
 <div class="row">
-  <table class="table" st-pipe="ctrl.fetch" st-table="ctrl.issues">
+  <table class="table table-hover" st-pipe="ctrl.fetch" st-table="ctrl.issues">
     <thead>
       <tr>
         <th>ID</th>
@@ -18,12 +18,16 @@
     <tbody ng-show="!ctrl.isLoading">
       <tr ng-repeat="issue in ctrl.issues">
         <td>{{issue.id}}</td>
-        <td>{{issue.created_at | date : "dd/MM/yyyy HH:mm:ss"}}</td>
+        <td>{{issue.created_at | date : "dd/MM/yyyy 'às' HH:mm:ss"}}</td>
         <td>{{issue.state.name}}</td>
         <td>{{issue.customer.name}}</td>
         <td>{{issue.issue_type.name}}</td>
         <td>{{issue.issue_reason.name}}</td>
-        <td><a class="btn btn-default btn-sm" uib-tooltip="Exibir detalhes"><i class="glyphicon glyphicon-eye-open"></i></a></td>
+        <td>
+          <a class="btn btn-default btn-sm" uib-tooltip="Exibir detalhes" ui-sref="issues_show({id: issue.id})">
+            <i class="glyphicon glyphicon-eye-open"></i>
+          </a>
+        </td>
       </tr>
     </tbody>
     <tbody ng-show="ctrl.isLoading">

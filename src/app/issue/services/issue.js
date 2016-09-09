@@ -3,16 +3,22 @@ export default class Issue {
     this._$http = $http;
     this._API_URL = API_URL;
   }
+  get(id) {
+    return this._$http({
+      method: "GET",
+      url: this._API_URL + "/issues/" + id
+    });
+  }
   fetch(params) {
     return this._$http({
       method: "GET",
       url: this._API_URL + "/issues",
       params: params
     });
-  };
+  }
   create(params) {
     return this._$http.post(this._API_URL + "/issues", params);
-  };
-};
+  }
+}
 
 Issue.$inject = ['$http', 'API_URL'];
