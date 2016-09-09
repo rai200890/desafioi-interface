@@ -152,6 +152,14 @@ module.exports = function makeWebpackConfig () {
    */
   config.plugins = [];
 
+  config.plugins.push(
+    new webpack.DefinePlugin({
+      'process.env': {
+      'API_URL': JSON.stringify(process.env.API_URL || 'http://localhost:3000/api/v1')
+    }
+  })
+)
+
   // Skip rendering index.html in test mode
   if (!isTest) {
     // Reference: https://github.com/ampedandwired/html-webpack-plugin

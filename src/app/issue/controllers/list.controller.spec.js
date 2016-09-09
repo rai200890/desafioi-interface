@@ -37,6 +37,11 @@ import app from '../../app';
       }
     };
 
+    let fullURL = (path) => {
+      let baseURL = 'http://localhost:3000/api/v1';
+      return baseURL + path
+    };
+
     beforeEach(() => {
       angular.mock.module(app);
       angular.mock.inject(($controller, $httpBackend) => {
@@ -44,7 +49,7 @@ import app from '../../app';
         httpBackend = $httpBackend;
       });
 
-      httpBackend.when('GET', 'http://localhost:3000/issues?per=15').respond(200, response);
+      httpBackend.when('GET', fullURL('/issues?per=15')).respond(200, response);
     });
 
     afterEach(function() {

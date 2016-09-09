@@ -34,6 +34,11 @@ describe('NewIssueCtrl', () => {
     }]
   };
 
+  let fullURL = (path) => {
+    let baseURL = 'http://localhost:3000/api/v1';
+    return baseURL + path
+  };
+
   beforeEach(() => {
     angular.mock.module(app);
     angular.mock.inject(($controller, $httpBackend) => {
@@ -41,9 +46,9 @@ describe('NewIssueCtrl', () => {
       httpBackend = $httpBackend;
     });
 
-    httpBackend.when('GET', 'http://localhost:3000/issue_types').respond(200, issueTypes);
-    httpBackend.when('GET', 'http://localhost:3000/issue_reasons').respond(200, issueReasons);
-    httpBackend.when('GET', 'http://localhost:3000/states').respond(200, states);
+    httpBackend.when('GET', fullURL('/issue_types')).respond(200, issueTypes);
+    httpBackend.when('GET', fullURL('/issue_reasons')).respond(200, issueReasons);
+    httpBackend.when('GET', fullURL('/states')).respond(200, states);
 
   });
 
@@ -141,7 +146,7 @@ describe('NewIssueCtrl', () => {
   describe('#save', () => {
     describe('invalid params', () => {
       it('should return errors', () => {
-        httpBackend.when('POST', 'http://localhost:3000/issues').respond(422, {
+        httpBackend.when('POST', fullURL('/issues')).respond(422, {
           "errors": ["Tipo de Atendimento não pode ficar em branco"]
         });
         ctrl.issue = {
@@ -164,7 +169,7 @@ describe('NewIssueCtrl', () => {
   });
   describe('valid params', () => {
     it('should return success', () => {
-      httpBackend.when('POST', 'http://localhost:3000/issues').respond(200, {
+      httpBackend.when('POST', fullURL('/issues')).respond(200, {
         "issue": {
           "id": 1
         }
@@ -190,7 +195,7 @@ describe('NewIssueCtrl', () => {
 
   describe('#getCustomers', () => {
     it('should return customer by text', () => {
-      httpBackend.when('GET', 'http://localhost:3000/customers?by_id_or_name_or_email_or_phone=Raissa')
+      httpBackend.when('GET', fullURL('/customers?by_id_or_name_or_email_or_phone=Raissa'))
         .respond(200, {
           "customers": [{
             "id": 1,
