@@ -1,7 +1,7 @@
 {
-  "name": "desafioi-interface",
+  "name": "sac-interface",
   "version": "1.0.0",
-  "description": "Desafio I Interface",
+  "description": "SAC Interface",
   "scripts": {
     "build": "rimraf dist && webpack --bail --progress --profile",
     "server": "webpack-dev-server --history-api-fallback --inline --progress",
@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/rai200890/desafioi-interface.git"
+    "url": "https://github.com/rai200890/sac-interface.git"
   },
   "author": "Raissa Ferreira",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/rai200890/desafioi-interface/issues"
+    "url": "https://github.com/rai200890/sac-interface/issues"
   },
-  "homepage": "https://github.com/rai200890/desafioi-interface",
+  "homepage": "https://github.com/rai200890/sac-interface",
   "dependencies": {
     "angular": "^1.5.0",
     "angular-smart-table": "^2.1.8",
