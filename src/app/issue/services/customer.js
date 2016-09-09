@@ -1,13 +1,12 @@
-const API_URL = "http://localhost:3000";
-
 export default class Customer {
-  constructor($http) {
+  constructor($http, API_URL) {
     this._$http = $http;
+    this._API_URL = API_URL;
   }
   fetch(text) {
     return this._$http({
       method: "get",
-      url: API_URL + "/customers",
+      url: this._API_URL + "/customers",
       params: {by_id_or_name_or_email_or_phone: text}
     }).then((customers) => {
       return customers.data.customers.map((item, index) => {
@@ -18,3 +17,4 @@ export default class Customer {
   });
   };
 };
+Customer.$inject = ['$http', 'API_URL'];

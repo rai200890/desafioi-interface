@@ -8,9 +8,10 @@ import uibootstrap from 'angular-ui-bootstrap';
 import smarttable from 'angular-smart-table';
 
 const MODULE_NAME = 'app';
-const API_URL = 'http://localhost:3000';
+const API_URL = process.env.API_URL;
 
 angular.module(MODULE_NAME, [uirouter, uibootstrap, issue, smarttable])
-  .config(routing);
+  .config(routing)
+  .value('API_URL', process.env.API_URL);
 
 export default MODULE_NAME;

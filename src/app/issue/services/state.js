@@ -1,14 +1,14 @@
-const API_URL = "http://localhost:3000";
 export default class State {
-  constructor($http) {
+  constructor($http, API_URL) {
     this._$http = $http;
+    this._API_URL = API_URL;
   }
   fetch() {
     return this._$http({
       method: "get",
-      url: API_URL + "/states"
+      url: this._API_URL + "/states"
     });
   };
 };
 
-State.$inject = ['$http'];
+State.$inject = ['$http','API_URL'];

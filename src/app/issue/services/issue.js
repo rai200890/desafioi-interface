@@ -1,18 +1,18 @@
-const API_URL = "http://localhost:3000";
 export default class Issue {
-  constructor($http) {
+  constructor($http, API_URL) {
     this._$http = $http;
+    this._API_URL = API_URL;
   }
   fetch(params) {
     return this._$http({
       method: "GET",
-      url: API_URL + "/issues",
+      url: this._API_URL + "/issues",
       params: params
     });
   };
   create(params) {
-    return this._$http.post(API_URL + "/issues", params);
+    return this._$http.post(this._API_URL + "/issues", params);
   };
 };
 
-Issue.$inject = ['$http'];
+Issue.$inject = ['$http', 'API_URL'];
