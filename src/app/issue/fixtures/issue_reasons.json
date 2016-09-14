@@ -1,0 +1,12 @@
+{
+  "issue_reasons": [{
+    "id": 1,
+    "name": "dúvidas"
+  }, {
+    "id": 2,
+    "name": "reclamações"
+  }, {
+    "id": 3,
+    "name": "elogios"
+  }]
+}
