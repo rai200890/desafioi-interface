@@ -1,15 +1,14 @@
 export default class ShowIssueCtrl {
-  constructor(Issue, $stateParams){
+  constructor(Issue, $stateParams) {
     var ctrl = this;
     this.issue = null;
 
     Issue.get($stateParams.id).success((response) => {
       ctrl.issue = response.issue;
     });
-
-    this.customerName = (issue) => {
-      return issue.customer.name
-    };
+  };
+  customerName(issue) {
+    return issue.customer.name
   };
 }
 

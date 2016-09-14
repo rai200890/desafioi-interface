@@ -1,16 +1,15 @@
 export default class IssuesCtrl {
-  constructor(Issue){
-    var ctrl = this;
+  constructor(Issue) {
+    let ctrl = this;
 
-    this.meta = {
+    ctrl.meta = {
       current_page: 1
     };
+    ctrl.per = 15;
+    ctrl.issues = [];
+    ctrl.isLoading = true;
 
-    this.per = 15;
-    this.issues = [];
-    this.isLoading = true;
-
-    this.fetch = (tableState) => {
+    ctrl.fetch = (tableState) => {
       ctrl.isLoading = true;
 
       let pagination = {
@@ -25,7 +24,7 @@ export default class IssuesCtrl {
         ctrl.isLoading = false;
       });
     };
-  };
-};
+  }
+}
 
 IssuesCtrl.$inject = ['Issue'];
