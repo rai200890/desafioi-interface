@@ -1,11 +1,11 @@
 import testHelper from "../helper.spec"
+import issueTypes from 'json!../fixtures/issue_types.json';
+import issueReasons from 'json!../fixtures/issue_reasons.json';
+import states from 'json!../fixtures/states.json';
 
 describe('NewIssueCtrl', () => {
   let ctrl;
   let httpBackend;
-  let issueTypes = require('json!../fixtures/issue_types.json');
-  let issueReasons = require('json!../fixtures/issue_reasons.json');
-  let states = require('json!../fixtures/states.json');
 
   beforeEach(() => {
     angular.mock.module(testHelper.app);
@@ -29,9 +29,9 @@ describe('NewIssueCtrl', () => {
       httpBackend.flush();
     });
     it('load issue types, reasons and states', () => {
-      expect(ctrl.issueTypes).toEqual(issueTypes['issue_types']);
-      expect(ctrl.issueReasons).toEqual(issueReasons['issue_reasons']);
-      expect(ctrl.states).toEqual(states['states']);
+      expect(ctrl.issueTypes).toEqual(issueTypes.issue_types);
+      expect(ctrl.issueReasons).toEqual(issueReasons.issue_reasons);
+      expect(ctrl.states).toEqual(states.states);
     });
   });
 
