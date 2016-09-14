@@ -1,55 +1,18 @@
-import app from '../../app';
+import testHelper from "../helper.spec"
+
   describe('IssuesCtrl', () => {
     let ctrl;
     let httpBackend;
-    let response = {
-      "issues": [{
-        "id": 6,
-        "body": "oi",
-        "created_at": "2016-09-08T01:06:53.000Z",
-        "issue_type": {
-          "id": 1,
-          "name": "telefone"
-        },
-        "issue_reason": {
-          "id": 1,
-          "name": "duvidas"
-        },
-        "customer": {
-          "id": 1,
-          "name": "Raissa Ferreira",
-          "email": "rai200890@gmail.com",
-          "phone": "22222222",
-          "id_card_code": "1243456789"
-        },
-        "state": {
-          "id": 1,
-          "abbreviation": "AC",
-          "name": "Acre"
-        }
-      }],
-      "meta": {
-        "current_page": 1,
-        "next_page": null,
-        "prev_page": null,
-        "total_pages": 1,
-        "total_count": 1
-      }
-    };
-
-    let fullURL = (path) => {
-      let baseURL = 'http://localhost:3000/api/v1';
-      return baseURL + path
-    };
+    let response = require('json!../fixtures/issues.json');
 
     beforeEach(() => {
-      angular.mock.module(app);
+      angular.mock.module(testHelper.app);
       angular.mock.inject(($controller, $httpBackend) => {
         ctrl = $controller('IssuesCtrl', {});
         httpBackend = $httpBackend;
       });
 
-      httpBackend.when('GET', fullURL('/issues?per=15')).respond(200, response);
+      httpBackend.when('GET', testHelper.fullURL('/issues?per=15')).respond(200, response);
     });
 
     afterEach(function() {

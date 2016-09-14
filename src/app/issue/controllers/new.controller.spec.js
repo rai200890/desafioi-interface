@@ -1,65 +1,34 @@
-import app from '../../app';
+import testHelper from "../helper.spec"
+
 describe('NewIssueCtrl', () => {
   let ctrl;
   let httpBackend;
-  let issueTypes = {
-    "issue_types": [{
-      "id": 1,
-      "name": "telefone"
-    }, {
-      "id": 2,
-      "name": "chat"
-    }, {
-      "id": 3,
-      "name": "email"
-    }]
-  };
-  let issueReasons = {
-    "issue_reasons": [{
-      "id": 1,
-      "name": "dúvidas"
-    }, {
-      "id": 2,
-      "name": "reclamações"
-    }, {
-      "id": 3,
-      "name": "elogios"
-    }]
-  };
-  let states = {
-    "states": [{
-      "id": 1,
-      "abbreviation": "RJ",
-      "name": "Rio de Janeiro"
-    }]
-  };
-
-  let fullURL = (path) => {
-    let baseURL = 'http://localhost:3000/api/v1';
-    return baseURL + path
-  };
+  let issueTypes = require('json!../fixtures/issue_types.json');
+  let issueReasons = require('json!../fixtures/issue_reasons.json');
+  let states = require('json!../fixtures/states.json');
 
   beforeEach(() => {
-    angular.mock.module(app);
+    angular.mock.module(testHelper.app);
     angular.mock.inject(($controller, $httpBackend) => {
       ctrl = $controller('NewIssueCtrl', {});
       httpBackend = $httpBackend;
     });
 
-    httpBackend.when('GET', fullURL('/issue_types')).respond(200, issueTypes);
-    httpBackend.when('GET', fullURL('/issue_reasons')).respond(200, issueReasons);
-    httpBackend.when('GET', fullURL('/states')).respond(200, states);
-
+    httpBackend.when('GET', testHelper.fullURL('/issue_types')).respond(200, issueTypes);
+    httpBackend.when('GET', testHelper.fullURL('/issue_reasons')).respond(200, issueReasons);
+    httpBackend.when('GET', testHelper.fullURL('/states')).respond(200, states);
   });
 
-  afterEach(function() {
+  afterEach(() => {
     httpBackend.verifyNoOutstandingExpectation();
     httpBackend.verifyNoOutstandingRequest();
   });
 
   describe('#init', () => {
-    it('load issue types, reasons and states', () => {
+    beforeEach(() => {
       httpBackend.flush();
+    });
+    it('load issue types, reasons and states', () => {
       expect(ctrl.issueTypes).toEqual(issueTypes['issue_types']);
       expect(ctrl.issueReasons).toEqual(issueReasons['issue_reasons']);
       expect(ctrl.states).toEqual(states['states']);
@@ -67,24 +36,30 @@ describe('NewIssueCtrl', () => {
   });
 
   describe('#closeSuccess', () => {
-    it('should close success messages', () => {
+    beforeEach(() => {
       httpBackend.flush();
+    });
+    it('should close success messages', () => {
       ctrl.success = 'Mensagem de sucesso';
       ctrl.closeSuccess();
       expect(ctrl.success).toEqual(null);
     });
   });
   describe('#closeErrors', () => {
-    it('should close error messages', () => {
+    beforeEach(() => {
       httpBackend.flush();
+    });
+    it('should close error messages', () => {
       ctrl.errors = ['erro1', 'erro2'];
       ctrl.closeErrors();
       expect(ctrl.errors).toEqual(null);
     });
   });
   describe('#clear', () => {
-    it('should clear all inputs', () => {
+    beforeEach(() => {
       httpBackend.flush();
+    });
+    it('should clear all inputs', () => {
       ctrl.issue = {
         "state_id": 1,
         "issue_type_id": 1,
@@ -106,8 +81,10 @@ describe('NewIssueCtrl', () => {
 
   describe('#validate', () => {
     describe('invalid params', () => {
-      it('should return false', () => {
+      beforeEach(() => {
         httpBackend.flush();
+      });
+      it('should return false', () => {
         ctrl.issue = {
           "state_id": 1,
           "body": "reclamação"
@@ -124,8 +101,10 @@ describe('NewIssueCtrl', () => {
     });
   });
   describe('valid params', () => {
-    it('should return true', () => {
+    beforeEach(() => {
       httpBackend.flush();
+    });
+    it('should return true', () => {
       ctrl.issue = {
         "state_id": 1,
         "issue_type_id": 1,
@@ -146,7 +125,7 @@ describe('NewIssueCtrl', () => {
   describe('#save', () => {
     describe('invalid params', () => {
       it('should return errors', () => {
-        httpBackend.when('POST', fullURL('/issues')).respond(422, {
+        httpBackend.when('POST', testHelper.fullURL('/issues')).respond(422, {
           "errors": ["Tipo de Atendimento não pode ficar em branco"]
         });
         ctrl.issue = {
@@ -169,7 +148,7 @@ describe('NewIssueCtrl', () => {
   });
   describe('valid params', () => {
     it('should return success', () => {
-      httpBackend.when('POST', fullURL('/issues')).respond(200, {
+      httpBackend.when('POST', testHelper.fullURL('/issues')).respond(200, {
         "issue": {
           "id": 1
         }
@@ -195,7 +174,7 @@ describe('NewIssueCtrl', () => {
 
   describe('#getCustomers', () => {
     it('should return customer by text', () => {
-      httpBackend.when('GET', fullURL('/customers?by_id_or_name_or_email_or_phone=Raissa'))
+      httpBackend.when('GET', testHelper.fullURL('/customers?by_id_or_name_or_email_or_phone=Raissa'))
         .respond(200, {
           "customers": [{
             "id": 1,
