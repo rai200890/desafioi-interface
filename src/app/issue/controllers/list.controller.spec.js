@@ -1,5 +1,5 @@
-import testHelper from "../helper.spec"
-import response from 'json!../fixtures/issues.json'
+import testHelper from "../../helper.spec"
+import response from 'json!../../fixtures/issues.json'
 
 describe('IssuesCtrl', () => {
   let ctrl;

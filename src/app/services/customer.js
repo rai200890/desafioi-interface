@@ -15,6 +15,10 @@ export default class Customer {
         return item
       });
   });
-  };
-};
+  }
+  create(params) {
+    return this._$http.post(this._API_URL + "/customers", params);
+  }
+}
+
 Customer.$inject = ['$http', 'API_URL'];

@@ -11,19 +11,26 @@
 
 <body ng-app="app">
   <nav class="navbar navbar-default">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="#">SAC</a>
-      </div>
+    <div class="row">
       <div uib-dropdown>
+        <a class="navbar-brand" href="#">SAC</a>
         <a role="button" class="btn btn-lg" uib-dropdown-toggle ng-disabled="disabled">
-              Atendimentos <span class="caret"></span>
-            </a>
+        Atendimentos <span class="caret"></span>
+        </a>
         <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
           <li role="menuitem"><a ui-sref="issues_list">Listar atendimentos</a></li>
           <li role="menuitem"><a ui-sref="issues_new">Novo atendimento</a></li>
         </ul>
       </div>
+      <div uib-dropdown>
+        <a role="button" class="btn btn-lg" uib-dropdown-toggle ng-disabled="disabled">
+        Clientes <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+          <li role="menuitem"><a ui-sref="customers_new">Novo cliente</a></li>
+        </ul>
+      </div>
+    </div>
     </div>
   </nav>
   <div class="container">

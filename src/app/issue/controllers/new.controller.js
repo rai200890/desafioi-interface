@@ -22,20 +22,20 @@ export default class NewIssueCtrl {
     State.fetch().success((response) => {
       ctrl.states = response.states;
     });
-  };
+  }
 
   closeErrors() {
     this.errors = null;
-  };
+  }
 
   closeSuccess() {
     this.success = null;
-  };
+  }
 
   clear() {
     this.customer = null;
     this.issue = {};
-  };
+  }
 
   validate() {
     let fields = ['issue_type_id', 'issue_reason_id', 'state_id', 'body'];
@@ -43,7 +43,7 @@ export default class NewIssueCtrl {
     return this.customer && fields.reduce((result, field, index, array) => {
       return result && issue[field] !== '' && issue[field] !== undefined && issue[field] !== null;
     });
-  };
+  }
 
   save() {
     let ctrl = this;
@@ -52,14 +52,16 @@ export default class NewIssueCtrl {
       issue: ctrl.issue
     }).success((response) => {
       ctrl.success = `Atendimento nº ${response.issue.id} registrado com sucesso!`;
+      ctrl.errors = null;
     }).error((response, status_code) => {
+      ctrl.success = null;
       ctrl.errors = response.errors;
     });
-  };
+  }
 
   getCustomers(text) {
     return this._Customer.fetch(text);
-  };
+  }
 
 }
 
