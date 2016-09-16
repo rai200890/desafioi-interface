@@ -1,7 +1,7 @@
-import testHelper from "../helper.spec"
-import issueTypes from 'json!../fixtures/issue_types.json';
-import issueReasons from 'json!../fixtures/issue_reasons.json';
-import states from 'json!../fixtures/states.json';
+import testHelper from "../../helper.spec"
+import issueTypes from 'json!../../fixtures/issue_types.json';
+import issueReasons from 'json!../../fixtures/issue_reasons.json';
+import states from 'json!../../fixtures/states.json';
 
 describe('NewIssueCtrl', () => {
   let ctrl;
